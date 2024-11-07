@@ -1,24 +1,26 @@
 pipeline {
     agent any
     stages {
-        stage("checkout"){
+        stage("checkout") {
             steps {
                 checkout scm
             }
         }
 
-        stage("test"){
-            steps{
-                sh 'cd api'
-                sh 'npm install'
-                sh 'npm test'
+        stage("test") {
+            steps {
+                dir('api') {
+                    bat 'npm install'
+                    bat 'npm test'
+                }
             }
         }
 
-        stage("build"){
+        stage("build") {
             steps {
-                sh 'cd api'
-                sh 'npm build'
+                dir('api') {
+                    bat 'npm run build'
+                }
             }
         }
     }
