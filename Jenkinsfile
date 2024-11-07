@@ -23,5 +23,13 @@ pipeline {
                 }
             }
         }
+
+        stage("build docker image"){
+            steps {
+                scripts {
+                    bat 'docker-compose  build '
+                }
+            }
+        }
     }
 }
