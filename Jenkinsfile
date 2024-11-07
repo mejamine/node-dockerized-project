@@ -9,6 +9,7 @@ pipeline {
 
         stage("test"){
             steps{
+                sh 'cd api'
                 sh 'npm install'
                 sh 'npm test'
             }
@@ -16,6 +17,7 @@ pipeline {
 
         stage("build"){
             steps {
+                sh 'cd api'
                 sh 'npm build'
             }
         }
