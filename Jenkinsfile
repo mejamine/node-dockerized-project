@@ -27,6 +27,8 @@ pipeline {
         stage("build docker image"){
             steps {
                 scripts {
+                    bat 'docker --version'
+                    bat 'docker-compose --version'
                     bat 'docker-compose  build '
                 }
             }
